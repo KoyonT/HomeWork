@@ -1,38 +1,33 @@
     package org.example;
-
     import ru.pflb.mq.dummy.implementation.ConnectionImpl;
     import ru.pflb.mq.dummy.implementation.DestinationImpl;
     import ru.pflb.mq.dummy.implementation.ProducerImpl;
     import ru.pflb.mq.dummy.interfaces.Connection;
     import ru.pflb.mq.dummy.interfaces.Session;
-
-    import java.util.ArrayList;
-    import java.util.Iterator;
-    import java.util.List;
+    import java.io.BufferedReader;
+    import java.io.FileReader;
     import java.util.concurrent.TimeUnit;
 
-public class Task1 {
+public class Task2 {
     public static void main(String[] args) {
-  try {
+        System.out.println("Укажите путь до файла: ");
+        try {
            Connection connection = new ConnectionImpl();
            Session session = connection.createSession(true);
-           DestinationImpl destination = new DestinationImpl("MyQueue");
+           DestinationImpl destination = new DestinationImpl("MyQueue2");
            ProducerImpl producer =  new ProducerImpl(destination);
-           List<String> list = new ArrayList<>();
-           list.add("Четыре");
-           list.add("Пять");
-           list.add("Шесть");
-      for (String s : list) {
-          producer.send(s);
-          TimeUnit.SECONDS.sleep(2);
-      }
-           session.close();
-           connection.close();
+      boolean infinity = true;
+      while (infinity) {
+          BufferedReader reader = new BufferedReader(new FileReader(args[0]));
+          while (reader.ready()) {
+              producer.send(reader.readLine());
+              TimeUnit.SECONDS.sleep(2);
+                                          }
+                                }
        }
        catch (Exception e) {
            e.printStackTrace();
-       }
-        }
+  }
     }
-
+}
 
