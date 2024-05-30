@@ -5,9 +5,7 @@
     import ru.pflb.mq.dummy.implementation.ProducerImpl;
     import ru.pflb.mq.dummy.interfaces.Connection;
     import ru.pflb.mq.dummy.interfaces.Session;
-
     import java.util.ArrayList;
-    import java.util.Iterator;
     import java.util.List;
     import java.util.concurrent.TimeUnit;
 
