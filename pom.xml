@@ -7,7 +7,15 @@
     <groupId>org.example</groupId>
     <artifactId>HomeWork</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+ <dependencies>
+      <dependency>
+          <groupId>local</groupId>
+          <artifactId>dummy-connector</artifactId>
+          <version>1.0</version>
+          <scope>system</scope>
+          <systemPath>${project.basedir}/src/main/resources/dummy-connector.jar</systemPath>
+      </dependency>
+  </dependencies>
     <properties>
         <maven.compiler.source>22</maven.compiler.source>
         <maven.compiler.target>22</maven.compiler.target>
